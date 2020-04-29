@@ -1,11 +1,17 @@
 import React, { useReducer } from 'react';
-import { todoListReducer, data } from '../reducers/todoListReducer.js';
+import { todoListReducer, initialState } from '../reducers/todoListReducer.js';
+import { TodoForm } from './'
 
 const TodoList = () => {
-    const [list, dispatch] = useReducer(todoListReducer, data);
+    const [list, dispatch] = useReducer(todoListReducer, initialState);
+
+    const listHandler = (task) => {
+        dispatch(task);
+    }
 
     return(
         <div>
+            <TodoForm addTodo={listHandler} />
             {list.map(listItem => {
                 return(
                     <div key={listItem.id}>
