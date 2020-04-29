@@ -13,6 +13,10 @@ const TodoList = () => {
         dispatch({id: id, type: 'COMPLETED'})
     }
 
+    const clearCompleted = () => {
+        dispatch({type: 'CLEAR'});
+    }
+
     return(
         <div>
             <TodoForm addTodo={listHandler} />
@@ -24,6 +28,8 @@ const TodoList = () => {
                     </div>
                 )
             })}
+            <br />
+            <button onClick={clearCompleted}>Clear Completed</button>
         </div>
     )
 }

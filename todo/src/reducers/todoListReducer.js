@@ -32,6 +32,10 @@ function todoListReducer(state, action) {
             const tempState = [...state];
             tempState[index] = {...state[index], completed: !state[index].completed};
             return tempState;
+        case 'CLEAR':
+            return [
+                ...state.filter(task => !task.completed)
+            ]
         default:
             return state;
     }
