@@ -9,6 +9,10 @@ const TodoList = () => {
         dispatch(task);
     }
 
+    const toggleCompleted = (id) => {
+        dispatch({id: id, type: 'COMPLETED'})
+    }
+
     return(
         <div>
             <TodoForm addTodo={listHandler} />
@@ -16,6 +20,7 @@ const TodoList = () => {
                 return(
                     <div key={listItem.id}>
                         <h2>{listItem.item}</h2>
+                        <button onClick={() => toggleCompleted(listItem.id)}>{listItem.completed ? 'Complete' : 'Incomplete'}</button>
                     </div>
                 )
             })}

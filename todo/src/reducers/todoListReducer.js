@@ -27,6 +27,11 @@ function todoListReducer(state, action) {
                     id: new Date()
                 }
             ]
+        case 'COMPLETED':
+            const index = state.findIndex(task => task.id === action.id);
+            const tempState = [...state];
+            tempState[index] = {...state[index], completed: !state[index].completed};
+            return tempState;
         default:
             return state;
     }
